@@ -1,16 +1,202 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+@import url('https://fonts.googleapis.com/css?family=Stick+No+Bills&display=swap');
+:root {
+    --background-color: #121112;
+    --secondary-background-color: #292828;
+    --tertiary-background-color: #343434;
+    --topnav-color: var(--tertiary-background-color);
+    --sidenav-color: var(--secondary-background-color);
+    --primary-text-color: #ffffff;
+    --secondary-text-color: rgba(255, 255, 255, 0.699);
+    --primary-color: #00a153;
+    --secondary-color: #2bc178;
+    --error-color: #ee0000;
 }
 
 * {
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Stick No Bills', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+*::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    width: 5px;
+    background-color: var(--primary-color);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
+}
+
+a {
+    color: inherit;
+    transition: .3s;
+    text-underline-offset: 3px;
+}
+
+nav,
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.logo {
+    justify-content: flex-start;
+}
+
+.user {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.settings {
+    margin: 10px;
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.settings:hover {
+    color: var(--primary-color);
+}
+
+.logo a {
+    font-size: 2.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    color: var(--primary-text-color);
+    z-index: 2;
+    text-decoration: none;
+}
+
+.primary-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.25rem;
+    background-color: transparent;
+    color: var(--primary-text-color);
+    border: 3px var(--primary-color) solid;
+    outline: none;
+    transition: .3s;
+}
+
+input[type="datetime-local"] {
+    color-scheme: dark;
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+.image-container {
+    position: relative;
+}
+
+.empty-chart {
+    flex: 1 1 calc(100% - 300px);
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    transition: .3s;
+    border: 5px solid var(--secondary-background-color);
+}
+
+.expense,
+.income {
+    margin: 5px 0;
+}
+
+::placeholder {
+    color: var(--secondary-text-color);
+}
+
+#or {
+    text-align: center;
+}
+
+.loading-page {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.loading-page h1:last-child {
+    font-size: 3rem;
+}
+
+.loading-logo {
+    font-size: 12rem;
+    animation: upAndDown .5s infinite;
+    color: var(--primary-color);
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.avatar p {
+    margin-left: 5px;
+    font-weight: 500;
+    width: 10ch;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.avatar img {
+    border-radius: 50%;
+}
+
+@keyframes upAndDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo a {
+        font-size: 2rem;
+    }
 }

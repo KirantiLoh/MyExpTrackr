@@ -1,0 +1,96 @@
+.loginPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max(60vw, 500px);
+}
+
+.loginImageContainer {
+    position: relative;
+    width: 40vw;
+    height: 100%;
+}
+
+.loginImageContainer img:first-child {
+    filter: brightness(0.6);
+    z-index: -1;
+}
+
+.loginForm,
+.registerForm {
+    background-color: var(--background-color);
+    padding: 100px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.registerForm {
+    padding: 75px;
+}
+
+.loginBtn {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    padding: 10px 20px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 3px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 5rem;
+}
+
+.googleBtn {
+    padding: 10px 20px;
+    background-color: #4285F4;
+    color: var(--primary-text-color);
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.errorMessage {
+    color: var(--error-color);
+    transition: .3s;
+}
+
+@media screen and (max-width: 480px) {
+    .loginImageContainer {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        z-index: -1;
+    }
+    .loginForm,
+    .registerForm {
+        flex: unset;
+        height: max-content;
+        padding: 20px;
+        width: calc(100% - 10px);
+        background-color: #121112bd;
+    }
+    .loginForm p,
+    .registerForm p {
+        margin: 10px 0;
+        font-size: 1.25rem;
+    }
+    .title {
+        font-size: 3rem;
+    }
+}

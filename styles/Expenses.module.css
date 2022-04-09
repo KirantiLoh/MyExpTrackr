@@ -1,17 +1,9 @@
-.homePage {
+.expensesPage {
     position: relative;
     min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     padding: 10px;
-}
-
-.homePage a:hover {
-    color: var(--secondary-color);
-}
-
-.sidenav {
-    background-color: var(--sidenav-color);
 }
 
 .main {
@@ -27,33 +19,15 @@
     flex-direction: column;
 }
 
-.chart {
-    flex: 1 1 auto;
-    transition: .3s;
-    border: 5px solid var(--secondary-background-color);
-}
-
-.chartOptions {
-    display: flex;
-}
-
-.chartOptions h1 {
-    padding: 7px;
-    color: var(--secondary-text-color);
-    transition: .3s;
-    cursor: pointer;
-}
-
-h1.active {
-    color: var(--secondary-color);
-    background-color: var(--secondary-background-color);
-}
-
-.expenseIncome {
+.expensesDetail {
     flex: 1 1 300px;
     padding: 20px 10px;
     display: flex;
     flex-direction: column;
+}
+
+.addExpensesContainer form {
+    width: 300px;
 }
 
 .expensesContainer,
@@ -68,7 +42,8 @@ h1.active {
 }
 
 .expensesContainer h1,
-.incomesContainer h1 {
+.incomesContainer h1,
+.addExpensesContainer form h1 {
     color: var(--secondary-color);
 }
 
@@ -80,9 +55,11 @@ h1.active {
 }
 
 @media screen and (max-width: 480px) {
-    .main,
-    .upper {
+    .main {
         flex-direction: column;
+    }
+    .addExpensesContainer form {
+        width: 100%;
     }
     .chartContainer {
         width: 100%;
