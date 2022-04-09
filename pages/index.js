@@ -100,7 +100,7 @@ const Home = () => {
         <Header currentUser={currentUser}/>
         <div className={styles.homePage}>
         <div className={styles.upper}>
-          <h1 className="user">Welcome <Avatar displayName={userDoc?.name} profilePic={userDoc?.photoURL} email={currentUser.email}/></h1>
+          <h1 className="user">Welcome <Avatar displayName={userDoc?.name} profilePic={userDoc?.avatar} email={currentUser.email}/></h1>
           <h1>Balance : Rp <span className="balance">{userDoc?.balance}</span></h1>
         </div>
         <main className={styles.main}>
