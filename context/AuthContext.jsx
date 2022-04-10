@@ -17,7 +17,7 @@ const AuthProvider = ({children}) => {
 
     const router = useRouter()
 
-    const createUserDoc = async (user) => {
+    const createUserDoc = async (user, name) => {
         if (!user) return
 
         const userRef = doc(db, 'users', user.uid)
@@ -29,7 +29,7 @@ const AuthProvider = ({children}) => {
             try {
                 await setDoc(userRef, {
                     email: email,
-                    name: displayName,
+                    name: displayName ? displayName : name,
                     avatar: photoURL,
                     provider: providerData[0].providerId,
                     uid: uid,
@@ -63,7 +63,6 @@ const AuthProvider = ({children}) => {
             let userCredentials = await signInWithPopup(auth, new GoogleAuthProvider())
             setCurrentUser(userCredentials.user)
             await createUserDoc(userCredentials.user)
-            setErrorMessage('')
             router.push('/')
         } catch (err) {
             console.error(err.message)
@@ -75,8 +74,7 @@ const AuthProvider = ({children}) => {
         try {
             let userCredentials = await signInWithEmailAndPassword(auth, email, password)
             setCurrentUser(userCredentials.user)
-            await createUserDoc(userCredentials.user)
-            setErrorMessage('')
+            await createUserDoc(userCredentials.user, name)
             router.push('/')
         } catch (err) {
             console.error(err.message)
@@ -96,11 +94,10 @@ const AuthProvider = ({children}) => {
         try {
             let userCredentials = await createUserWithEmailAndPassword(auth, email, password1)
             setCurrentUser(userCredentials.user)
-            await createUserDoc(userCredentials.user)
             await updateProfile(userCredentials.user, {
                 displayName: name
             })
-            setErrorMessage('')
+            await createUserDoc(userCredentials.user)
             router.push('/')
         } catch (err) {
             console.error(err.message)
@@ -130,6 +127,7 @@ const AuthProvider = ({children}) => {
                 router.push('/account/login') 
             } else {
                 setCurrentUser(user)
+                router.push('/')
 
             }
             setLoading(false)

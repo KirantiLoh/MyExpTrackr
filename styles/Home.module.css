@@ -1,9 +1,9 @@
 .homePage {
     position: relative;
-    min-height: calc(100vh - 100px);
+    min-height: 100vh;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
 }
 
 .homePage a:hover {
@@ -19,6 +19,27 @@
     flex: 1 1 auto;
 }
 
+.upper {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upper h1,
+.showSideNav {
+    font-size: 2.3rem;
+}
+
+.showSideNav {
+    margin-right: 15px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
 .chartContainer {
     flex: 1 1 calc(100% - 300px);
     position: relative;
@@ -30,11 +51,14 @@
 .chart {
     flex: 1 1 auto;
     transition: .3s;
+    margin: 0 10px;
+    background-color: var(--secondary-background-color);
     border: 5px solid var(--secondary-background-color);
 }
 
 .chartOptions {
     display: flex;
+    margin: 0 10px;
 }
 
 .chartOptions h1 {
@@ -50,8 +74,8 @@ h1.active {
 }
 
 .expenseIncome {
-    flex: 1 1 300px;
-    padding: 20px 10px;
+    flex: 1 1 400px;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
 }
@@ -59,6 +83,12 @@ h1.active {
 .expensesContainer,
 .incomesContainer {
     flex: 1 1;
+    padding: 10px 20px;
+    background-color: var(--secondary-background-color);
+}
+
+.expensesContainer {
+    margin: 10px 0;
 }
 
 .expenses,
@@ -88,5 +118,12 @@ h1.active {
         width: 100%;
         flex: unset;
         height: calc(100vh - 200px);
+    }
+    .upper {
+        align-items: flex-start;
+    }
+    .upper h1,
+    .left {
+        font-size: 2rem;
     }
 }

@@ -6,7 +6,7 @@ import { AuthContext } from '../context/AuthContext'
 import { useContext } from 'react'
 import Image from 'next/image'
 import Logo from '../public/logo.png'
-
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
 
@@ -22,6 +22,13 @@ const Header = () => {
             </a>
           </Link>
         </h1>
+        <ul>
+          <li>
+            <label htmlFor="chk" className="showSideNav">
+              <FontAwesomeIcon icon={faTimes}/>
+            </label>
+          </li>
+        </ul>
           <Link href={'/account'}>
             <a className='settings'>
               <FontAwesomeIcon icon={faCog}/>

@@ -49,6 +49,24 @@ nav,
     text-decoration: none;
 }
 
+nav {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: -150%;
+    height: 100vh;
+    transition: .3s;
+    background-color: var(--tertiary-background-color);
+}
+
+#chk {
+    display: none;
+}
+
+#chk:checked~nav {
+    left: 0;
+}
+
 .logo {
     justify-content: flex-start;
 }
@@ -132,6 +150,10 @@ input::-webkit-calendar-picker-indicator {
     place-items: center;
     transition: .3s;
     border: 5px solid var(--secondary-background-color);
+}
+
+.empty-chart h1 {
+    font-size: 1.5rem;
 }
 
 .expense,

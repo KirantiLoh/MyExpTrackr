@@ -35,21 +35,17 @@ const IncomePage = () => {
     const handleSubmit = async e => {
         e.preventDefault()
         if (amount < 1000 || !desc || !createdDate) return
-        await addDoc(collection(db, 'users', currentUser.uid, 'incomes'), {
+        let newData = {
             amount: Number(amount),
             desc: desc,
             createdAt: Timestamp.fromDate(new Date(createdDate))
-        })
-
+        }
+        await addDoc(collection(db, 'users', currentUser.uid, 'incomes'), newData)
         await updateDoc(doc(db, 'users', currentUser.uid), {
             last5Income : [
-                {
-                    amount: Number(amount),
-                    desc: desc,
-                    createdAt: Timestamp.fromDate(new Date(createdDate))
-                }, ...userDoc?.last5Income
-            ],
-            balance: Number(userDoc?.balance) + Number(amount)
+                newData, ...userDoc?.last5Income.slice(0, 4)
+            ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
+            balance: Number(userDoc?.balance) - Number(amount)
         })
         setAmount('')
         setDesc('')

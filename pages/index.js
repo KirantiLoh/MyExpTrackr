@@ -9,6 +9,8 @@ import { Chart as ChartJS } from 'chart.js/auto'
 import { Bar } from 'react-chartjs-2'
 import Avatar from "../components/Avatar"
 import Link from 'next/link'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
 
 
 const Home = () => {
@@ -97,10 +99,16 @@ const Home = () => {
     <div>
       {currentUser ? (
         <>
-        <Header currentUser={currentUser}/>
         <div className={styles.homePage}>
         <div className={styles.upper}>
-          <h1 className="user">Welcome <Avatar displayName={userDoc?.name} profilePic={userDoc?.avatar} email={currentUser.email}/></h1>
+        <div className={styles.left}>
+            <input type="checkbox" id="chk" />
+            <label htmlFor="chk" className={styles.showSideNav}>
+              <FontAwesomeIcon icon={faBars}/>
+            </label>
+            <Header currentUser={currentUser}/>
+            <h1 className="user">Welcome <Avatar displayName={userDoc?.name} profilePic={userDoc?.avatar} email={currentUser.email}/></h1>
+          </div>
           <h1>Balance : Rp <span className="balance">{userDoc?.balance}</span></h1>
         </div>
         <main className={styles.main}>

@@ -35,20 +35,16 @@ const ExpensePage = () => {
     const handleSubmit = async e => {
         e.preventDefault()
         if (amount < 1000 || !desc || !createdDate) return
-        await addDoc(collection(db, 'users', currentUser.uid, 'expenses'), {
+        let newData = {
             amount: Number(amount),
             desc: desc,
             createdAt: Timestamp.fromDate(new Date(createdDate))
-        })
-
+        }
+        await addDoc(collection(db, 'users', currentUser.uid, 'expenses'), newData)
         await updateDoc(doc(db, 'users', currentUser.uid), {
             last5Expenses : [
-                {
-                    amount: Number(amount),
-                    desc: desc,
-                    createdAt: Timestamp.fromDate(new Date(createdDate))
-                }, ...userDoc?.last5Expenses
-            ],
+                newData, ...userDoc?.last5Expenses.slice(0, 4)
+            ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
             balance: Number(userDoc?.balance) - Number(amount)
         })
         console.log('Expense Added Successfully')
