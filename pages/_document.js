@@ -9,7 +9,9 @@ class MainDocument extends Document {
     render() {
         return (
             <Html>
-                <Head/>
+                <Head>
+                    <link rel="manifest" href="/manifest.json" />
+                </Head>
                 <body>
                     <Main/>
                     <NextScript/>

@@ -3,7 +3,7 @@ import { getAuth, sendPasswordResetEmail, signInWithPopup, signInWithEmailAndPas
 import { app, db } from '../firebase/firebaseApp'
 import { useRouter } from "next/router";
 import LoadingScreen from "../components/LoadingScreen";
-import { doc, setDoc, getDoc, collection, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 
 
 const AuthContext = createContext()
@@ -38,7 +38,7 @@ const AuthProvider = ({children}) => {
                     total_income: 0,
                     last5Expenses: [],
                     last5Income: [],
-                    createdAt: new Date()
+                    createdAt: serverTimestamp()
                 })
             } catch (err) {
                 console.error(err)
@@ -51,7 +51,7 @@ const AuthProvider = ({children}) => {
         e.preventDefault()
         try {
             await sendPasswordResetEmail(auth, email)
-            router.push('/password-reset/success')
+            router.replace('/password-reset/success')
         } catch (err) {
             console.error(err)
         }
@@ -63,7 +63,7 @@ const AuthProvider = ({children}) => {
             let userCredentials = await signInWithPopup(auth, new GoogleAuthProvider())
             setCurrentUser(userCredentials.user)
             await createUserDoc(userCredentials.user)
-            router.push('/')
+            router.replace('/')
         } catch (err) {
             console.error(err.message)
         }
@@ -75,7 +75,7 @@ const AuthProvider = ({children}) => {
             let userCredentials = await signInWithEmailAndPassword(auth, email, password)
             setCurrentUser(userCredentials.user)
             await createUserDoc(userCredentials.user, name)
-            router.push('/')
+            router.replace('/')
         } catch (err) {
             console.error(err.message)
         }
@@ -98,7 +98,7 @@ const AuthProvider = ({children}) => {
                 displayName: name
             })
             await createUserDoc(userCredentials.user)
-            router.push('/')
+            router.replace('/')
         } catch (err) {
             console.error(err.message)
         }
@@ -124,10 +124,10 @@ const AuthProvider = ({children}) => {
             setLoading(true)
             if (!user) {
                 setCurrentUser(null)
-                router.push('/account/login') 
+                router.replace('/account/login') 
             } else {
                 setCurrentUser(user)
-                router.push('/')
+                router.replace('/')
 
             }
             setLoading(false)

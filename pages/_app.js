@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
     <Head>
-        <title>My ExpTrackr</title>
+        <title>My ExpTrackr - Track your Expenses and Incomes without any hassle</title>
         <meta name="description" content="My Expense Tracker is a website where people can track their expenses, created using Next JS and Firebase" />
         <link rel="icon" href="/favicon.ico" />
     </Head>

@@ -90,6 +90,8 @@ h1.active {
 .expensesContainer,
 .incomesContainer {
     flex: 1 1;
+    display: flex;
+    flex-direction: column;
     padding: 10px 20px;
     background-color: var(--secondary-background-color);
 }

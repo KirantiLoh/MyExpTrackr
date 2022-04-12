@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Stick+No+Bills&display=swap');
 :root {
-    --background-color: #121112;
+    --background-color: #121212;
     --secondary-background-color: #292828;
     --tertiary-background-color: #343434;
     --topnav-color: var(--tertiary-background-color);
@@ -64,6 +64,7 @@ nav {
 
 nav ul {
     list-style: none;
+    align-items: center;
 }
 
 nav ul li {
