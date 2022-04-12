@@ -1,14 +1,28 @@
 .expensesPage {
     position: relative;
-    min-height: calc(100vh - 100px);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 10px;
 }
 
 .main {
     display: flex;
     flex: 1 1 auto;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.left a {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.left h1 {
+    margin-left: 10px;
 }
 
 .chartContainer {
@@ -19,9 +33,17 @@
     flex-direction: column;
 }
 
+.chart {
+    flex: 1 1 auto;
+    transition: .3s;
+    margin: 0 10px;
+    margin-right: 0;
+    background-color: var(--secondary-background-color);
+    border: 5px solid var(--secondary-background-color);
+}
+
 .expensesDetail {
     flex: 1 1 300px;
-    padding: 20px 10px;
     display: flex;
     flex-direction: column;
 }
@@ -33,6 +55,9 @@
 .expensesContainer,
 .incomesContainer {
     flex: 1 1;
+    padding: 10px;
+    margin: 5px 10px;
+    background-color: var(--secondary-background-color);
 }
 
 .expenses,
@@ -45,6 +70,12 @@
 .incomesContainer h1,
 .addExpensesContainer form h1 {
     color: var(--secondary-color);
+}
+
+.addExpensesContainer {
+    margin: 5px 10px;
+    padding: 10px;
+    background-color: var(--secondary-background-color);
 }
 
 .expenseDetail,
@@ -65,5 +96,16 @@
         width: 100%;
         flex: unset;
         height: calc(100vh - 200px);
+    }
+    .chart {
+        margin-right: 10px;
+    }
+    .expensesDetail,
+    .incomeDetail {
+        padding: 10px 0;
+    }
+    .expensesContainer,
+    .incomesContainer {
+        margin: 10px;
     }
 }

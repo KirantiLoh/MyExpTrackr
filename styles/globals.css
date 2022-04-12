@@ -50,13 +50,24 @@ nav,
 }
 
 nav {
+    padding: 20px;
     position: fixed;
     z-index: 999;
     top: 0;
     left: -150%;
     height: 100vh;
     transition: .3s;
+    flex-direction: column;
+    justify-content: flex-start;
     background-color: var(--tertiary-background-color);
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    font-size: 2rem;
 }
 
 #chk {

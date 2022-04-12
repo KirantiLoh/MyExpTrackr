@@ -7,7 +7,9 @@ import { collection, query, updateDoc, orderBy, Timestamp, onSnapshot, serverTim
 import { AuthContext } from '../context/AuthContext'
 import { db } from '../firebase/firebaseApp'
 import styles from '../styles/Expenses.module.css'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 
 const IncomePage = () => {
 
@@ -45,7 +47,7 @@ const IncomePage = () => {
             last5Income : [
                 newData, ...userDoc?.last5Income.slice(0, 4)
             ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
-            balance: Number(userDoc?.balance) - Number(amount)
+            balance: Number(userDoc?.balance) + Number(amount)
         })
         setAmount('')
         setDesc('')
@@ -76,10 +78,18 @@ const IncomePage = () => {
         <>
         <Header/>
         <div className={styles.expensesPage}>
-            <h1>Incomes</h1>
+        <div className={styles.left}>
+            <Link href={'/'}>
+            <a>
+              <FontAwesomeIcon icon={faArrowLeft}/>
+            </a>
+          </Link>
+          <h1>Incomes</h1>
+        </div>
             <main className={styles.main}>
             <div className={styles.chartContainer}>
                 {datas.length > 0 ?
+                <div className={styles.chart}>
                 <Bar datasetIdKey='id' data={{
                     labels: labels,
                     datasets: [{
@@ -109,6 +119,7 @@ const IncomePage = () => {
                         maintainAspectRatio: false,
                         color: '#fff'
                 }}/>
+                </div>
                  : 
                 <div className="empty-chart">
                     No Data Recorded

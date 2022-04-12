@@ -107,9 +107,9 @@ const Home = () => {
               <FontAwesomeIcon icon={faBars}/>
             </label>
             <Header currentUser={currentUser}/>
-            <h1 className="user">Welcome <Avatar displayName={userDoc?.name} profilePic={userDoc?.avatar} email={currentUser.email}/></h1>
+            <h1 className="user">Welcome <span>{userDoc?.name}</span></h1>
           </div>
-          <h1>Balance : Rp <span className="balance">{userDoc?.balance}</span></h1>
+          <h1>Balance : <span>Rp {userDoc?.balance}</span></h1>
         </div>
         <main className={styles.main}>
         <div className={styles.chartContainer}>

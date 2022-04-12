@@ -7,7 +7,9 @@ import { collection, query, updateDoc, orderBy, Timestamp, onSnapshot, serverTim
 import { AuthContext } from '../context/AuthContext'
 import { db } from '../firebase/firebaseApp'
 import styles from '../styles/Expenses.module.css'
-
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const ExpensePage = () => {
 
@@ -77,10 +79,18 @@ const ExpensePage = () => {
         <>
         <Header/>
         <div className={styles.expensesPage}>
-            <h1>Expenses</h1>
+        <div className={styles.left}>
+            <Link href={'/'}>
+            <a>
+              <FontAwesomeIcon icon={faArrowLeft}/>
+            </a>
+          </Link>
+          <h1>Expenses</h1>
+        </div>
             <main className={styles.main}>
             <div className={styles.chartContainer}>
                 {datas.length > 0 ?
+                <div className={styles.chart}>
                 <Bar datasetIdKey='id' data={{
                     labels: labels,
                     datasets: [{
@@ -110,6 +120,7 @@ const ExpensePage = () => {
                         maintainAspectRatio: false,
                         color: '#fff'
                 }}/>
+                </div>
                  : 
                 <div className="empty-chart">
                     No Data Recorded
