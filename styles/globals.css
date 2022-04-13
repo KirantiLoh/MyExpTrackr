@@ -16,6 +16,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
     font-family: 'Stick No Bills', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -29,6 +30,10 @@
     background-color: var(--primary-color);
 }
 
+label {
+    cursor: pointer;
+}
+
 body {
     background-color: var(--background-color);
     color: var(--primary-text-color);
@@ -40,6 +45,15 @@ a {
     text-underline-offset: 3px;
 }
 
+h1 {
+    font-weight: 500;
+}
+
+h2,
+h3 {
+    font-weight: 300;
+}
+
 nav,
 .logo {
     display: flex;
@@ -49,6 +63,11 @@ nav,
     text-decoration: none;
 }
 
+nav a {
+    text-decoration: none;
+    transition: unset;
+}
+
 nav {
     padding: 20px;
     position: fixed;
@@ -56,7 +75,6 @@ nav {
     top: 0;
     left: -150%;
     height: 100vh;
-    transition: .3s;
     flex-direction: column;
     justify-content: flex-start;
     background-color: var(--tertiary-background-color);
@@ -64,11 +82,15 @@ nav {
 
 nav ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 nav ul li {
     font-size: 2rem;
+    margin: 20px 0;
+    transition: .3s;
 }
 
 #chk {
@@ -99,8 +121,13 @@ nav ul li {
     font-size: 2rem;
 }
 
-.settings:hover {
-    color: var(--primary-color);
+nav span {
+    margin-left: 10px;
+}
+
+nav li:hover,
+nav span:hover {
+    color: var(--secondary-color);
 }
 
 .logo a {
@@ -123,6 +150,11 @@ nav ul li {
     border-radius: 3px;
     font-size: 1.25rem;
     cursor: pointer;
+}
+
+.showSideNav {
+    font-size: 2.3rem;
+    margin-right: 15px;
 }
 
 button:disabled {
@@ -152,6 +184,10 @@ input::-webkit-calendar-picker-indicator {
 
 .image-container {
     position: relative;
+}
+
+.hideSideNav {
+    font-size: 3rem;
 }
 
 .empty-chart {

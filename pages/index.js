@@ -7,7 +7,6 @@ import styles from '../styles/Home.module.css'
 import { withProtected } from '../hoc/route'
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Bar } from 'react-chartjs-2'
-import Avatar from "../components/Avatar"
 import Link from 'next/link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
@@ -103,13 +102,13 @@ const Home = () => {
         <div className={styles.upper}>
         <div className={styles.left}>
             <input type="checkbox" id="chk" />
-            <label htmlFor="chk" className={styles.showSideNav}>
+            <label htmlFor="chk" className={"showSideNav"}>
               <FontAwesomeIcon icon={faBars}/>
             </label>
             <Header currentUser={currentUser}/>
-            <h1 className="user">Welcome <span>{userDoc?.name}</span></h1>
+            <h1 className="user">Welcome <span>{userDoc?.name ? userDoc?.name : "..."}</span></h1>
           </div>
-          <h1>Balance : <span>Rp {userDoc?.balance}</span></h1>
+          <h1>Balance : <span>Rp {userDoc?.balance ? userDoc?.balance : "..."}</span></h1>
         </div>
         <main className={styles.main}>
         <div className={styles.chartContainer}>

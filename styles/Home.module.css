@@ -26,19 +26,14 @@
     justify-content: space-between;
 }
 
-.homePage span {
-    margin-left: 10px;
-    color: var(--primary-text-color);
-}
-
 .upper h1 {
     font-size: 2.3rem;
     color: var(--secondary-color);
 }
 
-.showSideNav {
-    font-size: 2.3rem;
-    margin-right: 15px;
+.upper span {
+    margin-left: 10px;
+    color: var(--primary-text-color);
 }
 
 .left {

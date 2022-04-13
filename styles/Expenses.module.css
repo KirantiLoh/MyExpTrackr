@@ -55,7 +55,7 @@
 .expensesContainer,
 .incomesContainer {
     flex: 1 1;
-    padding: 10px;
+    padding: 10px 20px;
     margin: 5px 10px;
     background-color: var(--secondary-background-color);
 }
@@ -74,7 +74,7 @@
 
 .addExpensesContainer {
     margin: 5px 10px;
-    padding: 10px;
+    padding: 10px 20px;
     background-color: var(--secondary-background-color);
 }
 

@@ -1,17 +1,12 @@
 import Link from 'next/link'
 import Avatar from './Avatar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog } from '@fortawesome/free-solid-svg-icons'
-import { AuthContext } from '../context/AuthContext'
-import { useContext } from 'react'
+import { faCog, faMoneyBill, faWallet } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Logo from '../public/logo.png'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
-
-  const {currentUser} = useContext(AuthContext)
-
   return (
     <nav>
         <h1 className="logo">
@@ -24,6 +19,22 @@ const Header = () => {
         </h1>
         <ul>
           <li>
+            <Link href={'/expenses'}>
+              <a>
+                <FontAwesomeIcon icon={faMoneyBill}/>
+                <span>Expenses</span>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href={"/incomes"}>
+              <a>
+                <FontAwesomeIcon icon={faWallet}/>
+                <span>Incomes</span>
+              </a>
+            </Link>
+          </li>
+          <li>
           <Link href={'/account'}>
             <a className='settings'>
               <FontAwesomeIcon icon={faCog}/>
@@ -32,7 +43,7 @@ const Header = () => {
           </Link>
           </li>
           <li>
-            <label htmlFor="chk" className="showSideNav">
+            <label htmlFor="chk" className="hideSideNav">
               <FontAwesomeIcon icon={faTimes}/>
             </label>
           </li>

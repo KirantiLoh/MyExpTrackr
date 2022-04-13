@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }) {
     <Head>
         <title>My ExpTrackr - Track your Expenses and Incomes without any hassle</title>
         <meta name="description" content="My Expense Tracker is a website where people can track their expenses, created using Next JS and Firebase" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"/>
         <link rel="icon" href="/favicon.ico" />
     </Head>
     <Component {...pageProps} /> 
