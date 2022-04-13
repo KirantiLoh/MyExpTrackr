@@ -7,7 +7,6 @@ import loginStyles from '../../styles/Login.module.css'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import Link from 'next/link'
 import Logo from '../../public/logo.png'
-import LoadingScreen from '../../components/LoadingScreen'
 import { withPublic } from '../../hoc/route'
 
 
@@ -31,7 +30,7 @@ const LoginPage = () => {
             <h1 className={loginStyles.title}>Login</h1>
             <div>
                     <p><input type="email" name='email' id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
-                    <p><input type="password" name="password" id="id_password" placeholder='Password' onChange={e => setPassword(e.target.value)}/></p>
+                    <p><input type="password" style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} name="password" id="id_password" placeholder='Password' onChange={e => setPassword(e.target.value)}/></p>
                     <p className={loginStyles.errorMessage}>{errorMessage}</p>
                     <button type="submit" className={loginStyles.loginBtn} disabled={!email || !password}>Login</button>
             </div>

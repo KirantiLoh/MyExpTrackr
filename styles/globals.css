@@ -150,6 +150,7 @@ nav span:hover {
     border-radius: 3px;
     font-size: 1.25rem;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .showSideNav {

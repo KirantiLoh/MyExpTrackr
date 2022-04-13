@@ -13,6 +13,7 @@ const AuthProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const [userDoc, setUserDoc] = useState(null)
+    const [errorMessage, setErrorMessage] = useState('')
     const auth = getAuth(app)
 
     const router = useRouter()
@@ -51,15 +52,16 @@ const AuthProvider = ({children}) => {
         e.preventDefault()
         try {
             await sendPasswordResetEmail(auth, email)
-            router.replace('/password-reset/success')
+            router.replace('/account/password-reset/success')
         } catch (err) {
-            console.error(err)
+            setErrorMessage('No user was found with this email')
         }
     }
 
     const loginUserGoogle = async (e) => {
         e.preventDefault()
         try {
+            setErrorMessage('')
             let userCredentials = await signInWithPopup(auth, new GoogleAuthProvider())
             setCurrentUser(userCredentials.user)
             await createUserDoc(userCredentials.user)
@@ -72,12 +74,13 @@ const AuthProvider = ({children}) => {
     const loginUser = async (e, email, password) => {
         e.preventDefault()
         try {
+            setErrorMessage('')
             let userCredentials = await signInWithEmailAndPassword(auth, email, password)
             setCurrentUser(userCredentials.user)
             await createUserDoc(userCredentials.user, name)
             router.replace('/')
         } catch (err) {
-            console.error(err.message)
+            setErrorMessage('Wrong Password')
         }
     }
 
@@ -92,6 +95,7 @@ const AuthProvider = ({children}) => {
     const registerUser = async (e, email, name, password1, password2) => {
         e.preventDefault()
         try {
+            setErrorMessage('')
             let userCredentials = await createUserWithEmailAndPassword(auth, email, password1)
             setCurrentUser(userCredentials.user)
             await updateProfile(userCredentials.user, {
@@ -100,7 +104,9 @@ const AuthProvider = ({children}) => {
             await createUserDoc(userCredentials.user)
             router.replace('/')
         } catch (err) {
-            console.error(err.message)
+            if (err.message === "Firebase: Error (auth/email-already-in-use).") {
+                setErrorMessage("The email is taken")
+            }
         }
         
     }
@@ -116,12 +122,15 @@ const AuthProvider = ({children}) => {
         registerUser:registerUser,
         setLoading:setLoading,
         userDoc:userDoc,
-        setUserDoc:setUserDoc
+        setUserDoc:setUserDoc,
+        errorMessage: errorMessage,
+        setErrorMessage: setErrorMessage
     }
 
     useEffect(() => {
         return onAuthStateChanged(auth, (user) => {
             setLoading(true)
+            setErrorMessage('')
             if (!user) {
                 setCurrentUser(null)
                 router.replace('/account/login') 

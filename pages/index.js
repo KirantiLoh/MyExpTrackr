@@ -64,13 +64,13 @@ const Home = () => {
         let incomeData = []
         let expenseLabel = []
         let incomeLabel = []
-        doc.data().last5Expenses.forEach((expense) => {
-          expenseData.push(expense.amount)
-          expenseLabel.push((new Date(expense.createdAt.toMillis())).toLocaleDateString())
+        doc.data()?.last5Expenses.forEach((expense) => {
+          expenseData.push(expense?.amount)
+          expenseLabel.push((new Date(expense?.createdAt.toMillis())).toLocaleDateString())
           })
-          doc.data().last5Income.forEach((income) => {
-            incomeData.push(income.amount)
-            incomeLabel.push((new Date(income.createdAt.toMillis())).toLocaleDateString())
+          doc.data()?.last5Income.forEach((income) => {
+            incomeData.push(income?.amount)
+            incomeLabel.push((new Date(income?.createdAt.toMillis())).toLocaleDateString())
           })
           setExpenses(expenseData)
           setExpensesLabels(expenseLabel)
@@ -108,7 +108,7 @@ const Home = () => {
             <Header currentUser={currentUser}/>
             <h1 className="user">Welcome <span>{userDoc?.name ? userDoc?.name : "..."}</span></h1>
           </div>
-          <h1>Balance : <span>Rp {userDoc?.balance ? userDoc?.balance : "..."}</span></h1>
+          <h1>Balance : <span>Rp {userDoc?.balance ? userDoc?.balance : 0}</span></h1>
         </div>
         <main className={styles.main}>
         <div className={styles.chartContainer}>

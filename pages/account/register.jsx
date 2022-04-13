@@ -11,13 +11,12 @@ import { withPublic } from "../../hoc/route"
 
 const RegisterPage = () => {
  
-    const {registerUser, loginUserGoogle} = useContext(AuthContext)
+    const {registerUser, loginUserGoogle, setErrorMessage, errorMessage} = useContext(AuthContext)
 
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [password1, setPassword1] = useState('')
     const [password2, setPassword2] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
 
     const password1Ref = useRef()
     const password2Ref = useRef()
@@ -56,10 +55,10 @@ const RegisterPage = () => {
             <form className={loginStyles.registerForm} onSubmit={e => handleSubmit(e, email, name, password1, password2)}>
             <h1 className={loginStyles.title}>Register</h1>
             <div>
-                    <p><input type="email" name='email' value={email} id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
-                    <p><input type="text" name='name' value={name} id='id_username' placeholder='Userame' onChange={e => setName(e.target.value)}/></p>
-                    <p><input type="password" name="password1" ref={password1Ref} value={password1} id="id_password1" placeholder='Password' onChange={e => setPassword1(e.target.value)}/></p>
-                    <p><input type="password" name="password2" ref={password2Ref} value={password2} id="id_password2" placeholder='Confirm Password' onChange={e => setPassword2(e.target.value)}/></p>
+                    <p><input style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} type="email" name='email' value={email} id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
+                    <p><input style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} type="text" name='name' value={name} id='id_username' placeholder='Username' onChange={e => setName(e.target.value)}/></p>
+                    <p><input style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} type="password" name="password1" ref={password1Ref} value={password1} id="id_password1" placeholder='Password' onChange={e => setPassword1(e.target.value)}/></p>
+                    <p><input style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} type="password" name="password2" ref={password2Ref} value={password2} id="id_password2" placeholder='Confirm Password' onChange={e => setPassword2(e.target.value)}/></p>
                     <p className={loginStyles.errorMessage}>{errorMessage}</p>
                     <button type="submit" className={loginStyles.loginBtn} disabled={!email || !name || !password1 || !password2}>Register</button>
             </div>

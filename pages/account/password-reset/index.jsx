@@ -1,18 +1,15 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import { useContext,useState } from 'react'
 import { AuthContext } from '../../../context/AuthContext'
 import LoginImg from '../../../public/login-img.jpg'
 import loginStyles from '../../../styles/Login.module.css'
 import Logo from '../../../public/logo.png'
-import LoadingScreen from '../../../components/LoadingScreen'
 import Link from 'next/link'
-import { sendPasswordResetEmail } from 'firebase/auth'
 import { useRouter } from "next/router";
 
 const ResetPasswordPage = () => {
 
-    const { resetPassword } = useContext(AuthContext)
+    const { resetPassword, errorMessage } = useContext(AuthContext)
 
     const [email, setEmail] = useState('')
 
@@ -30,7 +27,8 @@ const ResetPasswordPage = () => {
             <form className={loginStyles.loginForm} onSubmit={e => resetPassword(e, email)}>
             <h1 className={loginStyles.title}>Password Reset</h1>
             <div>
-                    <p><input type="email" name='email' id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
+                    <p><input type="email" style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} name='email' id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
+                    <p className={loginStyles.errorMessage}>{errorMessage}</p>
                     <button type="submit" className={loginStyles.loginBtn}>Send</button>
             </div>
             <p>Have an account? Login <Link href={'/account/login'}><a>here</a></Link></p>
