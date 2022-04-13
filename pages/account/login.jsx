@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
-import { useContext,useState } from 'react'
+import { useContext,useState, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import LoginImg from '../../public/login-img.jpg'
 import loginStyles from '../../styles/Login.module.css'
@@ -12,10 +12,14 @@ import { withPublic } from '../../hoc/route'
 
 const LoginPage = () => {
 
-    const { errorMessage, loginUser, loginUserGoogle} = useContext(AuthContext)
+    const { errorMessage, loginUser, loginUserGoogle, setErrorMessage} = useContext(AuthContext)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    useEffect(() => {
+      setErrorMessage('')
+    }, [])
 
   return (
     <div className={loginStyles.loginPage}>

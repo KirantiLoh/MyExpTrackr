@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useState, useContext, useRef } from "react"
+import { useState, useContext, useRef, useEffect } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import loginStyles from '../../styles/Login.module.css'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
@@ -42,6 +42,9 @@ const RegisterPage = () => {
       registerUser(e, email, name, password1)
     }
 
+    useEffect(() => {
+      setErrorMessage('')
+    }, [])
 
   return (
     <div className={loginStyles.loginPage}>

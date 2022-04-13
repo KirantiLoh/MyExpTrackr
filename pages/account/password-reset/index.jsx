@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import { useContext,useState } from 'react'
+import { useContext,useState, useEffect } from 'react'
 import { AuthContext } from '../../../context/AuthContext'
 import LoginImg from '../../../public/login-img.jpg'
 import loginStyles from '../../../styles/Login.module.css'
 import Logo from '../../../public/logo.png'
 import Link from 'next/link'
-import { useRouter } from "next/router";
 
 const ResetPasswordPage = () => {
 
@@ -13,7 +12,9 @@ const ResetPasswordPage = () => {
 
     const [email, setEmail] = useState('')
 
-    const router = useRouter()
+    useEffect(() => {
+      setErrorMessage('')
+    }, [])
 
   return (
     <div className={loginStyles.loginPage}>
