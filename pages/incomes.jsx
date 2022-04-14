@@ -10,6 +10,7 @@ import styles from '../styles/Expenses.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
+import Modal from '../components/Modal'
 
 const IncomePage = () => {
 
@@ -19,6 +20,9 @@ const IncomePage = () => {
     const [desc, setDesc] = useState('')
     const [createdDate, setCreatedDate] = useState('')
     const [incomes, setIncomes] = useState([])
+    const [errorMessage, setErrorMessage] = useState('')
+    const [showModal, setShowModal] = useState(false)
+
 
     const {currentUser, userDoc} = useContext(AuthContext)
 
@@ -26,10 +30,11 @@ const IncomePage = () => {
 
     const handleChange = (e) => {
         if (Number.isNaN(Number(e.target.value))) {
-            console.log('Not a Number')
+            setErrorMessage('Input numbers only')
             amountRef.current.style.borderColor = 'var(--error-color)'
         } else {
             setAmount(e.target.value)
+            setErrorMessage('')
             amountRef.current.style.borderColor = 'var(--primary-color)'
         }
     }
@@ -73,6 +78,12 @@ const IncomePage = () => {
             unsubscribe()
         }
     }, [])
+
+    if (typeof window !== "undefined") {
+        window.onclick = () => {
+            setShowModal(false)
+        }
+    }
 
     return (
         <>
@@ -131,6 +142,7 @@ const IncomePage = () => {
                         <form onSubmit={e => handleSubmit(e)}>
                             <h1>Add Incomes</h1>
                             <input type="text" ref={amountRef} placeholder='Amount' onChange={e => handleChange(e)} value={amount} />
+                            <p className={styles.errorMessage}>{errorMessage}</p>
                             <input type="text" placeholder='Description' value={desc} onChange={e => setDesc(e.target.value)} />
                             <input type="datetime-local" value={createdDate} onChange={e => setCreatedDate(e.target.value)}/>
                             <button type="submit" disabled={amount < 1000 || !desc || !createdDate} className='primary-btn'>Add</button>
@@ -154,6 +166,7 @@ const IncomePage = () => {
                     </div>
                 </div>
             </main>
+            <Modal message={"Income successfuly added!"} show={showModal}/>
         </div>
         </>
         

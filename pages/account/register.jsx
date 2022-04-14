@@ -24,19 +24,12 @@ const RegisterPage = () => {
     const handleSubmit = (e) => {
       e.preventDefault()
       setErrorMessage('')
-      password1Ref.current.style.borderColor = 'var(--primary-color)'
-      password2Ref.current.style.borderColor = 'var(--primary-color)'
-      
       if (password1 !== password2) {
         setErrorMessage("Password does't match")
-        password1Ref.current.style.borderColor = 'var(--error-color)'
-        password2Ref.current.style.borderColor = 'var(--error-color)'
         return
       } 
       if (password1.length <= 6) {
         setErrorMessage("Password must be longer than 6 characters")
-        password1Ref.current.style.borderColor = 'var(--error-color)'
-        password2Ref.current.style.borderColor = 'var(--error-color)'
         return
       }
       registerUser(e, email, name, password1)

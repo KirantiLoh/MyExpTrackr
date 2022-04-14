@@ -10,6 +10,7 @@ import styles from '../styles/Expenses.module.css'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import Modal from '../components/Modal'
 
 const ExpensePage = () => {
 
@@ -19,6 +20,8 @@ const ExpensePage = () => {
     const [desc, setDesc] = useState('')
     const [createdDate, setCreatedDate] = useState('')
     const [expenses, setExpenses] = useState([])
+    const [errorMessage, setErrorMessage] = useState('')
+    const [showModal, setShowModal] = useState(false)
 
     const {currentUser, userDoc} = useContext(AuthContext)
 
@@ -26,10 +29,11 @@ const ExpensePage = () => {
 
     const handleChange = (e) => {
         if (Number.isNaN(Number(e.target.value))) {
-            console.log('Not a Number')
+            setErrorMessage('Input numbers only')
             amountRef.current.style.borderColor = 'var(--error-color)'
         } else {
             setAmount(e.target.value)
+            setErrorMessage('')
             amountRef.current.style.borderColor = 'var(--primary-color)'
         }
     }
@@ -49,7 +53,7 @@ const ExpensePage = () => {
             ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
             balance: Number(userDoc?.balance) - Number(amount)
         })
-        console.log('Expense Added Successfully')
+        setShowModal(true)
         setAmount('')
         setDesc('')
         setCreatedDate('')
@@ -132,6 +136,7 @@ const ExpensePage = () => {
                         <form onSubmit={e => handleSubmit(e)}>
                             <h1>Add Expenses</h1>
                             <input type="text" ref={amountRef} placeholder='Amount' onChange={e => handleChange(e)} value={amount} />
+                            <p className={styles.errorMessage}>{errorMessage}</p>
                             <input type="text" placeholder='Description' value={desc} onChange={e => setDesc(e.target.value)} />
                             <input type="datetime-local" value={createdDate} onChange={e => setCreatedDate(e.target.value)}/>
                             <button type="submit" disabled={amount < 1000 || !desc || !createdDate} className='primary-btn'>Add</button>
@@ -154,7 +159,7 @@ const ExpensePage = () => {
                     </ul>
                     </div>
                 </div>
-                
+                <Modal message={"Expense successfuly added!"} show={showModal}/>
             </main>
         </div>
         </>

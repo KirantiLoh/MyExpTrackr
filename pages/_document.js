@@ -15,7 +15,7 @@ class MainDocument extends Document {
                 <body>
                     <Main/>
                     <NextScript/>
-                    <div className="modal-root"></div>
+                    <div id="modal-root"></div>
                 </body>
             </Html>
         )
