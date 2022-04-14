@@ -8,6 +8,7 @@
 .main {
     display: flex;
     flex: 1 1 auto;
+    padding-bottom: 10px;
 }
 
 .left {
@@ -34,9 +35,10 @@
 }
 
 .chart {
+    border-radius: 3px;
     flex: 1 1 auto;
     transition: .3s;
-    margin: 5px 10px;
+    margin: 0 10px;
     margin-right: 0;
     background-color: var(--secondary-background-color);
 }
@@ -57,7 +59,8 @@
     min-height: 300px;
     flex: 1 1;
     padding: 10px 20px;
-    margin: 5px 10px;
+    margin: 0 10px;
+    margin-top: 5px;
     background-color: var(--secondary-background-color);
 }
 
@@ -75,7 +78,8 @@
 
 .addExpensesContainer {
     border-radius: 3px;
-    margin: 5px 10px;
+    margin: 0 10px;
+    margin-bottom: 5px;
     padding: 10px 20px;
     background-color: var(--secondary-background-color);
 }
@@ -111,5 +115,6 @@
     .expensesContainer,
     .incomesContainer {
         margin: 10px;
+        margin-bottom: 0;
     }
 }
