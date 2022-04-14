@@ -163,7 +163,7 @@ const Home = () => {
                     <li key={index} className='expense'>
                       <h2>{expense.desc}</h2>
                       <div className={styles.expenseDetail}>
-                      <small>Amount : {expense.amount}</small>
+                      <small>Amount : Rp {expense.amount}</small>
                       <small>Date : {(new Date(expense.createdAt.toMillis())).toLocaleDateString()}</small>
                       </div>
                     </li>

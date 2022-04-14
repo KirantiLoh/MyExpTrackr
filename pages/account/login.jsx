@@ -33,7 +33,7 @@ const LoginPage = () => {
             <form className={loginStyles.loginForm} onSubmit={e => loginUser(e, email, password)}>
             <h1 className={loginStyles.title}>Login</h1>
             <div>
-                    <p><input type="email" name='email' id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
+                    <p><input type="email"  style={{borderColor:  errorMessage === "User was not found" ? "var(--error-color)" : "var(--primary-color)"}} name='email' id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
                     <p><input type="password" style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} name="password" id="id_password" placeholder='Password' onChange={e => setPassword(e.target.value)}/></p>
                     <p className={loginStyles.errorMessage}>{errorMessage}</p>
                     <button type="submit" className={loginStyles.loginBtn} disabled={!email || !password}>Login</button>

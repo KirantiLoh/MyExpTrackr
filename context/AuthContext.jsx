@@ -80,7 +80,12 @@ const AuthProvider = ({children}) => {
             await createUserDoc(userCredentials.user, name)
             router.replace('/')
         } catch (err) {
-            setErrorMessage('Wrong Password')
+            if (err.message === "Firebase: Error (auth/wrong-password).") {
+                setErrorMessage('Wrong Password')
+            }
+            else if (err.message === "Firebase: Error (auth/user-not-found).") {
+                setErrorMessage("User was not found")
+            }
         }
     }
 

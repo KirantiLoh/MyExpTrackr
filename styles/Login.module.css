@@ -105,6 +105,7 @@
         margin: 0 10px;
         width: calc(100% - 10px);
         background-color: #121112bd;
+        border-radius: 3px;
     }
     .loginForm p,
     .registerForm p {

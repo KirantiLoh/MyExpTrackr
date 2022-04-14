@@ -36,10 +36,9 @@
 .chart {
     flex: 1 1 auto;
     transition: .3s;
-    margin: 0 10px;
+    margin: 5px 10px;
     margin-right: 0;
     background-color: var(--secondary-background-color);
-    border: 5px solid var(--secondary-background-color);
 }
 
 .expensesDetail {
@@ -54,6 +53,8 @@
 
 .expensesContainer,
 .incomesContainer {
+    border-radius: 3px;
+    min-height: 300px;
     flex: 1 1;
     padding: 10px 20px;
     margin: 5px 10px;
@@ -73,6 +74,7 @@
 }
 
 .addExpensesContainer {
+    border-radius: 3px;
     margin: 5px 10px;
     padding: 10px 20px;
     background-color: var(--secondary-background-color);
@@ -95,10 +97,12 @@
     .chartContainer {
         width: 100%;
         flex: unset;
-        height: calc(100vh - 200px);
+        height: calc(100vh - 65px);
+        overflow-y: hidden;
     }
     .chart {
         margin-right: 10px;
+        overflow-y: hidden;
     }
     .expensesDetail,
     .incomeDetail {
