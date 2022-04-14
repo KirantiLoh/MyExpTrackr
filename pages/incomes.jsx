@@ -79,12 +79,6 @@ const IncomePage = () => {
         }
     }, [])
 
-    if (typeof window !== "undefined") {
-        window.onclick = () => {
-            setShowModal(false)
-        }
-    }
-
     return (
         <>
         <Header/>
