@@ -54,6 +54,7 @@ const IncomePage = () => {
             ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
             balance: Number(userDoc?.balance) + Number(amount)
         })
+        setShowModal(true)
         setAmount('')
         setDesc('')
         setCreatedDate('')
@@ -112,7 +113,7 @@ const IncomePage = () => {
                           ticks: {
                             color: '#fff'
                           },
-                          suggestedMax: 1000000
+                          suggestedMax: 100000
                         },
                         x: {
                           ticks: {

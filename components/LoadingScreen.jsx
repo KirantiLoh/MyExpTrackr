@@ -19,7 +19,7 @@ const LoadingScreen = ({message}) => {
           </h1>
             <h1 className="loading-logo"><FontAwesomeIcon icon={faDollarSign}/></h1>
             <h1 className='title'>Loading...</h1>
-            <p>{message}</p>
+            <small>Created by Maurice Yang</small>
           </div>
         </div>
       )

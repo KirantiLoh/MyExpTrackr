@@ -5,10 +5,11 @@ import LoginImg from '../../../public/login-img.jpg'
 import loginStyles from '../../../styles/Login.module.css'
 import Logo from '../../../public/logo.png'
 import Link from 'next/link'
+import { withPublic } from '../../../hoc/route'
 
 const ResetPasswordPage = () => {
 
-    const { resetPassword, errorMessage } = useContext(AuthContext)
+    const { resetPassword, errorMessage, setErrorMessage } = useContext(AuthContext)
 
     const [email, setEmail] = useState('')
 
@@ -38,4 +39,4 @@ const ResetPasswordPage = () => {
   )
 }
 
-export default ResetPasswordPage
+export default withPublic(ResetPasswordPage)

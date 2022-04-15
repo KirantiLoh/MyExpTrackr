@@ -197,7 +197,11 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .empty-chart {
-    flex: 1 1 calc(100% - 300px);
+    border-radius: 3px;
+    flex: 1 1 auto;
+    transition: .3s;
+    margin: 0 10px;
+    margin-right: 0;
     position: relative;
     width: 100%;
     display: grid;
@@ -241,6 +245,11 @@ input::-webkit-calendar-picker-indicator {
     color: var(--primary-color);
 }
 
+.loading-page small {
+    margin-top: 15px;
+    color: var(--secondary-text-color);
+}
+
 .avatar {
     display: flex;
     align-items: center;
@@ -261,6 +270,7 @@ input::-webkit-calendar-picker-indicator {
 
 .notification {
     position: fixed;
+    display: flex;
     bottom: 0;
     left: 0;
     padding: 10px 20px;
@@ -271,6 +281,10 @@ input::-webkit-calendar-picker-indicator {
     font-size: 1.2rem;
     transition: .3s;
     border: 2px var(--notification-border-color) solid;
+}
+
+.notification span {
+    margin-left: 10px;
 }
 
 @keyframes upAndDown {
@@ -288,5 +302,9 @@ input::-webkit-calendar-picker-indicator {
 @media screen and (max-width: 480px) {
     .logo a {
         font-size: 2rem;
+    }
+    .empty-chart {
+        width: 100%;
+        margin: 0 10px;
     }
 }

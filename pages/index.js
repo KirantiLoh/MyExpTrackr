@@ -132,7 +132,7 @@ const Home = () => {
                 ticks: {
                   color: '#fff'
                 },
-                suggestedMax: 1000000
+                suggestedMax: 100000
               },
               x: {
                 ticks: {
