@@ -50,9 +50,10 @@ const IncomePage = () => {
         await addDoc(collection(db, 'users', currentUser.uid, 'incomes'), newData)
         await updateDoc(doc(db, 'users', currentUser.uid), {
             last5Income : [
-                newData, ...userDoc?.last5Income.slice(0, 4)
+                newData, ...incomes.slice(0, 4)
             ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
-            balance: Number(userDoc?.balance) + Number(amount)
+            balance: Number(userDoc?.balance) + Number(amount),
+            total_income: userDoc.total_income +  Number(amount)
         })
         setShowModal(true)
         setAmount('')
@@ -61,7 +62,7 @@ const IncomePage = () => {
     }
 
     useEffect(() => {
-        const q = query(collection(db, 'users', currentUser.uid, 'incomes'), orderBy('createdAt'), limit(10))
+        const q = query(collection(db, 'users', currentUser.uid, 'incomes'), orderBy('createdAt'))
         const unsubscribe = onSnapshot(q, snapshot => {
             let incomeData = []
             let label = []
@@ -95,6 +96,10 @@ const IncomePage = () => {
             <main className={styles.main}>
             <div className={styles.chartContainer}>
                 {datas.length > 0 ?
+                <>
+                <div className={styles.chartOptions}>
+                    <h1>Total Incomes : <span>Rp {userDoc.total_income}</span></h1>
+                </div>
                 <div className={styles.chart}>
                 <Bar datasetIdKey='id' data={{
                     labels: labels,
@@ -126,6 +131,7 @@ const IncomePage = () => {
                         color: '#fff'
                 }}/>
                 </div>
+                </>
                  : 
                 <div className="empty-chart">
                     No Data Recorded

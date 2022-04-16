@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Avatar from './Avatar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faMoneyBill, faWallet } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faHome, faMoneyBill, faWallet } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Logo from '../public/logo.png'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -18,6 +18,14 @@ const Header = () => {
           </Link>
         </h1>
         <ul>
+          <li>
+            <Link href={'/'}>
+              <a>
+                <FontAwesomeIcon icon={faHome}/>
+                <span>Home</span>
+              </a>
+            </Link>
+          </li>
           <li>
             <Link href={'/expenses'}>
               <a>
@@ -42,13 +50,10 @@ const Header = () => {
             </a>
           </Link>
           </li>
-          <li>
-            <label htmlFor="chk" className="hideSideNav">
-              <FontAwesomeIcon icon={faTimes}/>
-            </label>
-          </li>
         </ul>
-
+        <label htmlFor="chk" className="hideSideNav">
+              <FontAwesomeIcon icon={faTimes}/>
+        </label>
       </nav>
   )
 }

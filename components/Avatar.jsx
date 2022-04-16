@@ -1,17 +1,17 @@
 import Image from "next/image"
 import DefaultUserImage from '../public/default-user.png'
 
-const Avatar = ({profilePic, displayName, email}) => {
+const Avatar = ({profilePic, displayName, email, imageWidth, imageHeight}) => {
 
   return (
     <div className="avatar">
         <div className="image-container">
-        {profilePic ? <Image src={profilePic} width={30} height={30} objectFit={'cover'} alt={'avatar'}/> :
-        <Image src={DefaultUserImage} width={30} height={30} objectFit={'cover'} alt={'avatar'}/>}
+        {profilePic ? <Image src={profilePic} width={imageWidth} height={imageHeight} objectFit={'cover'} alt={'avatar'}/> :
+        <Image src={DefaultUserImage} width={imageWidth} height={imageHeight} objectFit={'cover'} alt={'avatar'}/>}
         </div>
-        <p>
+        <h1 style={{margin: '0 20px'}}>
             {displayName ? displayName : email}
-        </p>
+        </h1>
     </div>
   )
 }

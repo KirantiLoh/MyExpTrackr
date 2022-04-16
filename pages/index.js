@@ -99,17 +99,21 @@ const Home = () => {
       {currentUser ? (
         <>
         <div className={styles.homePage}>
-        <div className={styles.upper}>
-        <div className={styles.left}>
-            <input type="checkbox" id="chk" />
-            <label htmlFor="chk" className={"showSideNav"}>
-              <FontAwesomeIcon icon={faBars}/>
-            </label>
-            <Header currentUser={currentUser}/>
-            <h1 className="user">Welcome <span>{userDoc?.name ? userDoc?.name : "..."}</span></h1>
+          <div>
+          <div className={styles.left}>
+                  <input type="checkbox" id="chk" />
+                  <label htmlFor="chk" className={"showSideNav"}>
+                    <FontAwesomeIcon icon={faBars}/>
+                  </label>
+                  <Header currentUser={currentUser}/>
+                  <h1>Home</h1>
+                </div>
+              </div>
+            <div className={styles.upper}>
+              <h1 className="user">Welcome <span>{userDoc?.name ? userDoc?.name : "..."}</span></h1>
+                <h1>Balance : <span>Rp {userDoc?.balance ? userDoc?.balance : 0}</span></h1>
           </div>
-          <h1>Balance : <span>Rp {userDoc?.balance ? userDoc?.balance : 0}</span></h1>
-        </div>
+        
         <main className={styles.main}>
         <div className={styles.chartContainer}>
             <div className={styles.chartOptions}>

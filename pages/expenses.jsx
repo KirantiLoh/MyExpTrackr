@@ -49,9 +49,10 @@ const ExpensePage = () => {
         await addDoc(collection(db, 'users', currentUser.uid, 'expenses'), newData)
         await updateDoc(doc(db, 'users', currentUser.uid), {
             last5Expenses : [
-                newData, ...userDoc?.last5Expenses.slice(0, 4)
+                newData, ...expenses.slice(0, 4)
             ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
-            balance: Number(userDoc?.balance) - Number(amount)
+            balance: Number(userDoc?.balance) - Number(amount),
+            total_expense: userDoc.total_expense +  Number(amount)
         })
         setShowModal(true)
         setAmount('')
@@ -60,7 +61,7 @@ const ExpensePage = () => {
     }
 
     useEffect(() => {
-        const q = query(collection(db, 'users', currentUser.uid, 'expenses'), orderBy('createdAt'), limit(10))
+        const q = query(collection(db, 'users', currentUser.uid, 'expenses'), orderBy('createdAt'))
         const unsubscribe = onSnapshot(q, snapshot => {
             let label = []
             let data = []
@@ -70,9 +71,9 @@ const ExpensePage = () => {
                 label.push((new Date(doc.data().createdAt?.toMillis())).toLocaleDateString())
                 data.push(doc.data().amount)
             })
-            setExpenses(expenseData)
-            setDatas(data)
-            setLabels(label)
+            setExpenses(expenseData.reverse())
+            setDatas(data.reverse())
+            setLabels(label.reverse())
         })
         return () => {
             unsubscribe()
@@ -94,6 +95,10 @@ const ExpensePage = () => {
             <main className={styles.main}>
             <div className={styles.chartContainer}>
                 {datas.length > 0 ?
+                <>
+                <div className={styles.chartOptions}>
+                    <h1>Total Expenses : <span>Rp {userDoc.total_expense}</span></h1>
+                </div>
                 <div className={styles.chart}>
                 <Bar datasetIdKey='id' data={{
                     labels: labels,
@@ -125,6 +130,7 @@ const ExpensePage = () => {
                         color: '#fff'
                 }}/>
                 </div>
+                </>
                  : 
                 <div className="empty-chart">
                     No Data Recorded

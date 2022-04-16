@@ -25,11 +25,11 @@
 
 *::-webkit-scrollbar {
     background-color: transparent;
+    width: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
     border-radius: 30px;
-    width: 5px;
     background-color: var(--primary-color);
 }
 
@@ -88,7 +88,6 @@ nav ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 nav ul li {
@@ -116,22 +115,14 @@ nav ul li {
     justify-content: flex-start;
 }
 
-.settings {
-    margin: 10px;
-    padding: 5px;
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-    font-size: 2rem;
-}
-
 nav span {
     margin-left: 10px;
     transition: .3s;
 }
 
 nav li:hover,
-nav span:hover {
+nav span:hover,
+.hideSideNav:hover {
     color: var(--secondary-color);
 }
 
@@ -151,7 +142,27 @@ nav span:hover {
     color: var(--primary-text-color);
     margin: 5px;
     padding: 10px 20px;
-    border: none;
+    border: 3px transparent solid;
+    border-radius: 3px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.primary-btn:hover {
+    border: 3px var(--primary-color) solid;
+    color: var(--primary-color);
+    background-color: transparent;
+}
+
+.secondary-btn {
+    display: inline-block;
+    border: 3px var(--primary-color) solid;
+    color: var(--primary-color);
+    background-color: transparent;
+    margin: 5px;
+    padding: 10px 20px;
     border-radius: 3px;
     font-size: 1.25rem;
     cursor: pointer;
@@ -166,6 +177,11 @@ nav span:hover {
 button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.primary-btn:hover:disabled {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
 }
 
 input {
@@ -194,6 +210,7 @@ input::-webkit-calendar-picker-indicator {
 
 .hideSideNav {
     font-size: 3rem;
+    transition: .3s;
 }
 
 .empty-chart {

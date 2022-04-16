@@ -21,7 +21,7 @@
 
 .upper {
     display: flex;
-    padding: 10px;
+    padding: 5px 10px;
     align-items: center;
     justify-content: space-between;
 }
@@ -37,6 +37,8 @@
 }
 
 .left {
+    padding: 10px;
+    padding-bottom: 0;
     display: flex;
     align-items: center;
 }
@@ -87,7 +89,7 @@ h1.active {
 .expensesContainer,
 .incomesContainer {
     border-radius: 3px;
-    min-height: 300px;
+    min-height: 350px;
     flex: 1 1;
     display: flex;
     flex-direction: column;
@@ -125,7 +127,8 @@ h1.active {
     .chartContainer {
         width: 100%;
         flex: unset;
-        height: calc(100vh - 200px);
+        height: calc(100vh - 155px);
+        overflow-y: hidden;
     }
     .chart {
         margin-right: 10px;
@@ -134,7 +137,7 @@ h1.active {
         align-items: flex-start;
     }
     .upper h1,
-    .left {
+    .left h1 {
         font-size: 2rem;
     }
 }
