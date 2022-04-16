@@ -220,7 +220,6 @@ input::-webkit-calendar-picker-indicator {
     margin: 0 10px;
     margin-right: 0;
     position: relative;
-    width: 100%;
     display: grid;
     place-items: center;
     transition: .3s;
@@ -321,7 +320,6 @@ input::-webkit-calendar-picker-indicator {
         font-size: 2rem;
     }
     .empty-chart {
-        width: 100%;
         margin: 0 10px;
     }
 }

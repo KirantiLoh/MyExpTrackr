@@ -72,9 +72,9 @@ const IncomePage = () => {
                 label.push((new Date(doc.data().createdAt?.toMillis())).toLocaleDateString())
                 data.push(doc.data().amount)
             })
-            setIncomes(incomeData)
-            setDatas(data)
-            setLabels(label)
+            setIncomes(incomeData.reverse())
+            setDatas(data.reverse())
+            setLabels(label.reverse())
         })
         return () => {
             unsubscribe()
@@ -95,11 +95,10 @@ const IncomePage = () => {
         </div>
             <main className={styles.main}>
             <div className={styles.chartContainer}>
-                {datas.length > 0 ?
-                <>
                 <div className={styles.chartOptions}>
                     <h1>Total Incomes : <span>Rp {userDoc.total_income}</span></h1>
                 </div>
+                {datas.length > 0 ?
                 <div className={styles.chart}>
                 <Bar datasetIdKey='id' data={{
                     labels: labels,
@@ -131,7 +130,6 @@ const IncomePage = () => {
                         color: '#fff'
                 }}/>
                 </div>
-                </>
                  : 
                 <div className="empty-chart">
                     No Data Recorded

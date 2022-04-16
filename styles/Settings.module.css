@@ -1,6 +1,7 @@
 .upper {
     display: flex;
     padding: 10px;
+    background-color: var(--secondary-background-color);
 }
 
 .editProfileForm {

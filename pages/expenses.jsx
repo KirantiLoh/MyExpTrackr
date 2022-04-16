@@ -94,11 +94,10 @@ const ExpensePage = () => {
         </div>
             <main className={styles.main}>
             <div className={styles.chartContainer}>
-                {datas.length > 0 ?
-                <>
                 <div className={styles.chartOptions}>
                     <h1>Total Expenses : <span>Rp {userDoc.total_expense}</span></h1>
                 </div>
+                {datas.length > 0 ?
                 <div className={styles.chart}>
                 <Bar datasetIdKey='id' data={{
                     labels: labels,
@@ -130,7 +129,6 @@ const ExpensePage = () => {
                         color: '#fff'
                 }}/>
                 </div>
-                </>
                  : 
                 <div className="empty-chart">
                     No Data Recorded

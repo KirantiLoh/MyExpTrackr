@@ -38,7 +38,7 @@
 
 .left {
     padding: 10px;
-    padding-bottom: 0;
+    background-color: var(--secondary-background-color);
     display: flex;
     align-items: center;
 }
