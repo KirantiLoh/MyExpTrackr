@@ -27,7 +27,7 @@ export const withProtected =(Component) => {
             return <Component {...props}/>
         }
         router.replace('/account/login')
-        return
+        return <LoadingScreen/>
     }
 }
 
