@@ -3,7 +3,7 @@ import { getAuth, sendPasswordResetEmail, signInWithPopup, signInWithEmailAndPas
 import { app, db } from '../firebase/firebaseApp'
 import { useRouter } from "next/router";
 import LoadingScreen from "../components/LoadingScreen";
-import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, getDoc, serverTimestamp, onSnapshot } from "firebase/firestore";
 
 
 const AuthContext = createContext()
@@ -147,6 +147,17 @@ const AuthProvider = ({children}) => {
             setLoading(false)
         })
     }, [])
+
+    useEffect(() => {
+        if (currentUser) {
+            const userRef = doc(db, 'users', currentUser.uid)
+            
+            const unsubscribe = onSnapshot(userRef, (doc) => {
+                setUserDoc(doc.data())
+            })
+            return () => unsubscribe()
+        }
+      }, [currentUser])
 
     return <AuthContext.Provider value={contextValue}>
         {loading ? <LoadingScreen/> : children}

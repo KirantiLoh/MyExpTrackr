@@ -52,7 +52,7 @@ const IncomePage = () => {
             last5Income : [
                 newData, ...incomes.slice(0, 4)
             ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
-            balance: Number(userDoc?.balance) + Number(amount),
+            balance: Number(userDoc.balance) + Number(amount),
             total_income: userDoc.total_income +  Number(amount)
         })
         setShowModal(true)

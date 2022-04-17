@@ -121,7 +121,6 @@ nav span {
 }
 
 nav li:hover,
-nav span:hover,
 .hideSideNav:hover {
     color: var(--secondary-color);
 }

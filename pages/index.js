@@ -13,7 +13,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons"
 
 
 const Home = () => {
-  const {currentUser, setLoading, userDoc, setUserDoc} = useContext(AuthContext)
+  const {currentUser, setLoading, userDoc} = useContext(AuthContext)
 
   const [labels, setLabels] = useState([])
   const [expenses, setExpenses] = useState([])
@@ -56,43 +56,32 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true)
-    const userRef = doc(db, 'users', currentUser.uid)
-
-    const unsubscribe = onSnapshot(userRef, (doc) => {
-        setUserDoc(doc.data())
-        let expenseData = []
-        let incomeData = []
-        let expenseLabel = []
-        let incomeLabel = []
-        doc.data()?.last5Expenses.forEach((expense) => {
-          expenseData.push(expense?.amount)
-          expenseLabel.push((new Date(expense?.createdAt.toMillis())).toLocaleDateString())
-          })
-          doc.data()?.last5Income.forEach((income) => {
-            incomeData.push(income?.amount)
-            incomeLabel.push((new Date(income?.createdAt.toMillis())).toLocaleDateString())
-          })
-          setExpenses(expenseData)
-          setExpensesLabels(expenseLabel)
-          setIncomes(incomeData)
-          setIncomesLabels(incomeLabel)
-          setLabels(expenseLabel)
-          setChartData(
-            {
-              id: 0,
-              backgroundColor: "#00a153",
-              label: 'Expenses',
-              data: expenseData,
-              barThickness: 50
-            }
-          )
-        })
+    let expenseData = []
+    let incomeData = []
+    let expenseLabel = []
+    let incomeLabel = []
+    userDoc?.last5Expenses.forEach((expense) => {
+      expenseData.push(expense?.amount)
+      expenseLabel.push((new Date(expense?.createdAt.toMillis())).toLocaleDateString())
+    })
+    userDoc?.last5Income.forEach((income) => {
+      incomeData.push(income?.amount)
+      incomeLabel.push((new Date(income?.createdAt.toMillis())).toLocaleDateString())
+    })
+    setExpenses(expenseData)
+    setExpensesLabels(expenseLabel)
+    setIncomes(incomeData)
+    setIncomesLabels(incomeLabel)
+    setLabels(expenseLabel)
+    setChartData({
+        id: 0,
+        backgroundColor: "#00a153",
+        label: 'Expenses',
+        data: expenseData,
+        barThickness: 50
+      })
     setLoading(false)
-
-
-    return () => unsubscribe()
-
-  }, [])
+  }, [userDoc, currentUser])
 
   return (
     <div>

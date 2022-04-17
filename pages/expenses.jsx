@@ -51,7 +51,7 @@ const ExpensePage = () => {
             last5Expenses : [
                 newData, ...expenses.slice(0, 4)
             ].sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis()),
-            balance: Number(userDoc?.balance) - Number(amount),
+            balance: Number(userDoc.balance) - Number(amount),
             total_expense: userDoc.total_expense +  Number(amount)
         })
         setShowModal(true)
