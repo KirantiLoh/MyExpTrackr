@@ -1,0 +1,84 @@
+.aboutPageContainer {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 10px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 65px;
+}
+
+.left {
+    padding: 10px;
+    background-color: var(--tertiary-background-color);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.backgroundImageContainer {
+    position: relative;
+    height: calc(100vh - 66px);
+    transform-style: preserve-3d;
+    z-index: -1;
+}
+
+.backgroundImage {
+    filter: brightness(0.4);
+    position: absolute;
+    inset: 0;
+    transform: translateZ(-10px) scale(2);
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+.text h1 {
+    font-size: 10vw;
+}
+
+.text h3 {
+    color: var(--secondary-text-color);
+    font-size: 1.1rem;
+}
+
+.descContainer {
+    height: calc(100vh - 66px);
+    background-color: var(--background-color);
+    position: relative;
+    padding: 10px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: min(3rem, 10vw);
+    text-align: center;
+    color: var(--secondary-color);
+    padding: 10px;
+}
+
+.decor1 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.descContainer p {
+    max-width: 80ch;
+    font-size: 1.2rem;
+}

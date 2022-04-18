@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import Avatar from './Avatar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faHome, faMoneyBill, faWallet } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faHome, faMoneyBill, faWallet, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Logo from '../public/logo.png'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -49,6 +48,14 @@ const Header = () => {
               <span>Settings</span>
             </a>
           </Link>
+          </li>
+          <li>
+            <Link href={'/about'}>
+              <a>
+                <FontAwesomeIcon icon={faInfoCircle}/>
+                <span>About</span>
+              </a>
+            </Link>
           </li>
         </ul>
         <label htmlFor="chk" className="hideSideNav">

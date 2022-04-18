@@ -1,7 +1,11 @@
 .upper {
     display: flex;
     padding: 10px;
-    background-color: var(--secondary-background-color);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: var(--tertiary-background-color);
 }
 
 .editProfileForm {

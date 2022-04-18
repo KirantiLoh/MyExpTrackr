@@ -3,8 +3,7 @@
     --background-color: #121212;
     --secondary-background-color: #292828;
     --tertiary-background-color: #343434;
-    --topnav-color: var(--tertiary-background-color);
-    --sidenav-color: var(--secondary-background-color);
+    --sidenav-color: #414141;
     --primary-text-color: #ffffff;
     --secondary-text-color: rgba(255, 255, 255, 0.699);
     --primary-color: #00a153;
@@ -81,7 +80,7 @@ nav {
     flex-direction: column;
     justify-content: flex-start;
     transition: .3s;
-    background-color: var(--tertiary-background-color);
+    background-color: var(--sidenav-color);
 }
 
 nav ul {
@@ -274,7 +273,7 @@ input::-webkit-calendar-picker-indicator {
 .avatar p {
     margin-left: 5px;
     font-weight: 500;
-    width: 10ch;
+    max-width: 10ch;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -314,7 +313,7 @@ input::-webkit-calendar-picker-indicator {
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 700px) {
     .logo a {
         font-size: 2rem;
     }
