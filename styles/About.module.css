@@ -1,7 +1,6 @@
 .aboutPageContainer {
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto;
     perspective: 10px;
     scroll-behavior: smooth;
     scroll-padding-top: 65px;
@@ -53,7 +52,8 @@
     font-size: 1.1rem;
 }
 
-.descContainer {
+.descContainer,
+.techUsedContainer {
     height: calc(100vh - 66px);
     background-color: var(--background-color);
     position: relative;
@@ -81,4 +81,29 @@
 .descContainer p {
     max-width: 80ch;
     font-size: 1.2rem;
+    padding: 10px;
+}
+
+.techUsedContainer {
+    justify-content: center;
+}
+
+.techUsedList {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.techUsedList li {
+    padding: 10px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .techUsedList {
+        flex-direction: column;
+    }
 }
