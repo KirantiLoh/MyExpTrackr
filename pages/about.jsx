@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import Header from '../components/Header'
-import { AuthContext } from '../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import styles from '../styles/About.module.css'
@@ -10,16 +9,27 @@ import Decor1 from '../public/decoration1.png'
 import NextJSLogo from '../public/next-js.png'
 import Image from 'next/image'
 import FirebaseLogo from '../public/firebase.png'
+import emailjs from '@emailjs/browser'
+import Modal from '../components/Modal'
 
 const AboutPage = () => {
 
-  const {setLoading} = useContext(AuthContext)
+  const [message, setMessage] = useState('')
+  const [showModal, setShowModal] = useState(false)
 
-  useEffect(() => {
-    return () => {
+  const formRef = useRef()
 
-    }
-  }, [])
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    emailjs.sendForm(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, formRef.current)
+    .then(result => {
+      setMessage('Message successfully sent!')
+    }).catch(error => {
+      setMessage("There's an error when sending email...")
+    })
+  }
+
   return (
     <div className={styles.container}>
           <div className={styles.left}>
@@ -57,8 +67,21 @@ const AboutPage = () => {
             </li>
           </ul>
         </div>
-
+        <div className={styles.creatorContainer}>
+          <h1 className={styles.title}>Creator of My ExpTrackr</h1>
+        </div>
+        <div className={styles.contactContainer}>
+          <form ref={formRef}>
+            <h1 className={styles.title}>Contact Me</h1>
+            <input type="text" placeholder='Name' name="user_name" />
+            <input type="email" placeholder='Email' name="user_email" />
+            <textarea name="message" />
+            <button type="submit" value="Send">Send</button>
+          </form>
+        <small>&copy; Copyright 2018, Example Corporation</small>
+        </div>
     </div>
+    <Modal/>
     </div>
 
   )

@@ -1,9 +1,15 @@
 .aboutPageContainer {
     height: 100vh;
     overflow-x: hidden;
+    overflow-y: auto;
     perspective: 10px;
     scroll-behavior: smooth;
     scroll-padding-top: 65px;
+}
+
+.container {
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 .left {
@@ -27,7 +33,8 @@
 .backgroundImage {
     filter: brightness(0.4);
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     transform: translateZ(-10px) scale(2);
     object-fit: cover;
     width: 100%;
@@ -53,8 +60,10 @@
 }
 
 .descContainer,
-.techUsedContainer {
-    height: calc(100vh - 66px);
+.techUsedContainer,
+.creatorContainer,
+.contactContainer {
+    min-height: calc(100vh - 66px);
     background-color: var(--background-color);
     position: relative;
     padding: 10px;
@@ -86,6 +95,7 @@
 
 .techUsedContainer {
     justify-content: center;
+    height: max-content;
 }
 
 .techUsedList {
@@ -103,6 +113,9 @@
 }
 
 @media screen and (max-width: 768px) {
+    .decor1 {
+        position: static;
+    }
     .techUsedList {
         flex-direction: column;
     }
