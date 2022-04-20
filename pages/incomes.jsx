@@ -105,7 +105,7 @@ const IncomePage = () => {
             <main className={styles.main}>
             <div className={styles.chartContainer}>
                 <div className={styles.chartOptions}>
-                    <h1>Total Incomes : <span>Rp {userDoc.total_income}</span></h1>
+                    <h1>Total Incomes : <span>Rp {userDoc?.total_income ? userDoc.total_income : '0'}</span></h1>
                 </div>
                 {datas.length > 0 ?
                 <div className={styles.chart}>
@@ -149,10 +149,10 @@ const IncomePage = () => {
                     <div className={styles.addExpensesContainer}>
                         <form onSubmit={e => handleSubmit(e)}>
                             <h1>Add Incomes</h1>
-                            <input type="text" ref={amountRef} placeholder='Amount' onChange={e => handleChange(e)} value={amount} />
+                            <input required type="text" ref={amountRef} placeholder='Amount' onChange={e => handleChange(e)} value={amount} />
                             <p className={styles.errorMessage}>{errorMessage}</p>
-                            <input type="text" placeholder='Description' value={desc} onChange={e => setDesc(e.target.value)} />
-                            <input type="datetime-local" value={createdDate} onChange={e => setCreatedDate(e.target.value)}/>
+                            <input required type="text" placeholder='Description' value={desc} onChange={e => setDesc(e.target.value)} />
+                            <input required type="datetime-local" value={createdDate} onChange={e => setCreatedDate(e.target.value)}/>
                             <button type="submit" disabled={amount < 1000 || !desc || !createdDate} className='primary-btn'>Add</button>
                         </form>
                     </div>

@@ -48,7 +48,7 @@ const AboutPage = () => {
   return (
     <div className={styles.container}>
           <div className={styles.left}>
-            <input type="checkbox" id="chk" />
+            <input required type="checkbox" id="chk" />
             <label htmlFor="chk" className={"showSideNav"}>
               <FontAwesomeIcon icon={faBars}/>
             </label>
@@ -91,8 +91,8 @@ const AboutPage = () => {
         <div className={styles.contactContainer}>
           <form ref={formRef} onSubmit={e => handleSubmit(e)} autoComplete="off">
             <h1 className={styles.title}>Contact Me</h1>
-            <input type="text" placeholder='Name' name="from_name" />
-            <input type="email" placeholder='Email' name="from_email" />
+            <input required type="text" placeholder='Name' name="from_name" />
+            <input required type="email" placeholder='Email' name="from_email" />
             <textarea name="message" placeholder='Message'></textarea>
             <button type="submit" placeholder='Message' className='primary-btn'>Send</button>
             <button type="reset" className='secondary-btn'>Reset</button>

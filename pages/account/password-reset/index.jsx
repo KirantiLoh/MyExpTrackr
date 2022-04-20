@@ -31,7 +31,7 @@ const ResetPasswordPage = () => {
             <form className={loginStyles.loginForm} onSubmit={e => resetPassword(e, email)}>
             <h1 className={loginStyles.title}>Password Reset</h1>
             <div>
-                    <p><input type="email" style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} name='email' id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
+                    <p><input required type="email" style={{borderColor:  errorMessage ? "var(--error-color)" : "var(--primary-color)"}} name='email' id='id_email' placeholder='Email' onChange={e => setEmail(e.target.value)}/></p>
                     <p className={loginStyles.errorMessage}>{errorMessage}</p>
                     <button type="submit" className={loginStyles.loginBtn}>Send</button>
             </div>

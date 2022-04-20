@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOut } from '@fortawesome/free-solid-svg-icons'
 import Header from '../../components/Header'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import styles from '../../styles/Settings.module.css'
@@ -41,7 +41,7 @@ const AccountPage = () => {
   return (
     <div>
       <div className={styles.upper}>
-        <input type="checkbox" id="chk" />
+        <input required type="checkbox" id="chk" />
         <Header/>    
         <label htmlFor="chk" className="showSideNav">
           <FontAwesomeIcon icon={faBars}/>
@@ -52,7 +52,7 @@ const AccountPage = () => {
             <h1 className={styles.title}>Edit Profile</h1>
             <Avatar profilePic={userDoc?.avatar} displayName={userDoc?.name} email={userDoc?.email} imageHeight={100} imageWidth={100}/>
             <div>
-              <p><input type="text" name='name' value={name} id='id_username' placeholder='Username' onChange={e => setName(e.target.value)}/></p>
+              <p><input required type="text" name='name' value={name} id='id_username' placeholder='Username' onChange={e => setName(e.target.value)}/></p>
               <button type="submit" className='primary-btn' style={{marginLeft: '0'}} disabled={!name}>Update</button>
               <button className='secondary-btn' onClick={() => logoutUser()}><FontAwesomeIcon icon={faSignOut}/> Logout</button>
             </div>

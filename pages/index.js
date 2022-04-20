@@ -89,7 +89,7 @@ const Home = () => {
         <>
         <div className={styles.homePage}>
           <div className={styles.left}>
-            <input type="checkbox" id="chk" />
+            <input required type="checkbox" id="chk" />
             <label htmlFor="chk" className={"showSideNav"}>
               <FontAwesomeIcon icon={faBars}/>
             </label>

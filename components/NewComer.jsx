@@ -20,7 +20,7 @@ const NewComerForm = () => {
       <form >
         <h1>Welcome!</h1>
         <p>Let&apos;s set your new account by inputting your starting balance</p>
-        <input type="text" ref={amountRef} placeholder='Amount' onChange={e => handleChange(e)} value={amount} />
+        <input required type="text" ref={amountRef} placeholder='Amount' onChange={e => handleChange(e)} value={amount} />
       </form>
     </div>
   )
