@@ -189,7 +189,8 @@ button:disabled {
     color: var(--primary-text-color);
 }
 
-input {
+input,
+textarea {
     width: 100%;
     margin: 10px 0;
     padding: 10px;
@@ -199,6 +200,7 @@ input {
     border: 3px var(--primary-color) solid;
     outline: none;
     transition: .3s;
+    resize: vertical;
 }
 
 input[type="datetime-local"] {

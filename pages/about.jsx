@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Header from '../components/Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import styles from '../styles/About.module.css'
 import BgImg from '../public/login-img.jpg'
 import Decor1 from '../public/decoration1.png'
@@ -11,6 +11,8 @@ import Image from 'next/image'
 import FirebaseLogo from '../public/firebase.png'
 import emailjs from '@emailjs/browser'
 import Modal from '../components/Modal'
+import Maurice from '../public/maurice.jpg'
+import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 const AboutPage = () => {
 
@@ -21,14 +23,27 @@ const AboutPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    emailjs.sendForm(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, formRef.current)
+    emailjs.sendForm(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, formRef.current, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
     .then(result => {
       setMessage('Message successfully sent!')
+      console.log('Message successfully sent!')
     }).catch(error => {
       setMessage("There's an error when sending email...")
     })
+    setShowModal(true)
+    e.target.user_name.value = ''
+    e.target.user_email.value = ''
+    e.target.message.value = ''
   }
+  
+  useEffect(() => {
+    let handler = setTimeout(() => {
+      setShowModal(false)
+    }, 2000);
+    return () => {
+      clearTimeout(handler)
+    }
+  }, [showModal])
 
   return (
     <div className={styles.container}>
@@ -69,19 +84,35 @@ const AboutPage = () => {
         </div>
         <div className={styles.creatorContainer}>
           <h1 className={styles.title}>Creator of My ExpTrackr</h1>
+          <Image src={Maurice} alt="Maurice Yang" className={styles.mauriceImage} width={300} height={300}/>
+          <h3>Maurice Yang</h3>
+          <p>Developer and Designer</p>
         </div>
         <div className={styles.contactContainer}>
-          <form ref={formRef}>
+          <form ref={formRef} onSubmit={e => handleSubmit(e)} autoComplete="off">
             <h1 className={styles.title}>Contact Me</h1>
-            <input type="text" placeholder='Name' name="user_name" />
-            <input type="email" placeholder='Email' name="user_email" />
-            <textarea name="message" />
-            <button type="submit" value="Send">Send</button>
+            <input type="text" placeholder='Name' name="from_name" />
+            <input type="email" placeholder='Email' name="from_email" />
+            <textarea name="message" placeholder='Message'></textarea>
+            <button type="submit" placeholder='Message' className='primary-btn'>Send</button>
+            <button type="reset" className='secondary-btn'>Reset</button>
           </form>
-        <small>&copy; Copyright 2018, Example Corporation</small>
+          <div className={styles.socialMedia}>
+            <a href="https://www.instagram.com/maurice_yang/" target='_blank' rel='noreferrer'>
+              <FontAwesomeIcon icon={faInstagram}/>
+            </a>
+            <a href="https://twitter.com/ImMauriceYang" target='_blank' rel='noreferrer'>
+              <FontAwesomeIcon icon={faTwitter}/>
+            </a>
+            <a href="https://maurice-yang.netlify.app/" target='_blank' rel='noreferrer'>
+              <FontAwesomeIcon icon={faGlobe}/>
+            </a>
+
+          </div>
+        <small>&copy; Copyright {new Date().getFullYear()}, Maurice Yang</small>
         </div>
     </div>
-    <Modal/>
+    <Modal message={message} show={showModal}/>
     </div>
 
   )

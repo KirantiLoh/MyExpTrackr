@@ -80,6 +80,15 @@ const ExpensePage = () => {
         }
     }, [])
 
+    useEffect(() => {
+        let handler = setTimeout(() => {
+          setShowModal(false)
+        }, 2000);
+        return () => {
+          clearTimeout(handler)
+        }
+      }, [showModal])
+
     return (
         <>
         <Header/>

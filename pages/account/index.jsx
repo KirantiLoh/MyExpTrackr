@@ -29,6 +29,15 @@ const AccountPage = () => {
       setShowModal(true)
     }
 
+    useEffect(() => {
+      let handler = setTimeout(() => {
+        setShowModal(false)
+      }, 2000);
+      return () => {
+        clearTimeout(handler)
+      }
+    }, [showModal])
+
   return (
     <div>
       <div className={styles.upper}>

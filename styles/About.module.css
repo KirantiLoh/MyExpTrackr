@@ -112,6 +112,49 @@
     text-align: center;
 }
 
+.creatorContainer h3 {
+    font-size: 3rem;
+}
+
+.creatorContainer p {
+    color: var(--secondary-text-color);
+}
+
+.mauriceImage {
+    border-radius: 50%;
+}
+
+.contactContainer {
+    height: 100vh;
+    justify-content: center;
+}
+
+.contactContainer form {
+    margin: 10px 5px;
+    padding: 10px 15px;
+    background-color: var(--secondary-background-color);
+    border-radius: 3px;
+}
+
+.contactContainer form button {
+    margin: 10px;
+    margin-left: 0;
+}
+
+.socialMedia {
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+}
+
+.socialMedia a {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.socialMedia a:hover {
+    color: var(--primary-text-color);
+}
+
 @media screen and (max-width: 768px) {
     .decor1 {
         position: static;

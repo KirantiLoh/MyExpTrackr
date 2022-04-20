@@ -17,6 +17,8 @@ const ResetPasswordPage = () => {
       setErrorMessage('')
     }, [])
 
+    
+
   return (
     <div className={loginStyles.loginPage}>
             <div className={loginStyles.loginImageContainer}>
