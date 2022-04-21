@@ -1,6 +1,6 @@
 .homePage {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     padding-bottom: 10px;
     display: flex;
     flex-direction: column;
@@ -57,7 +57,7 @@
 
 .chart {
     border-radius: 0 3px 3px 3px;
-    flex: 1 1 auto;
+    height: calc(100vh - 185px);
     transition: .3s;
     margin: 0 10px;
     margin-right: 0;
@@ -86,8 +86,22 @@ h1.active {
 .expenseIncome {
     flex: 1 1 400px;
     padding: 0 10px;
+    margin-right: 10px;
+    overflow-y: auto;
+    height: calc(100vh - 125px);
     display: flex;
     flex-direction: column;
+}
+
+.expenseIncome::-webkit-scrollbar {
+    all: initial;
+    background-color: transparent;
+    width: 5px;
+}
+
+.expenseIncome::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: var(--primary-color);
 }
 
 .expensesContainer,
@@ -131,7 +145,7 @@ h1.active {
     .chartContainer {
         width: 100%;
         flex: unset;
-        height: calc(100vh - 155px);
+        height: calc(100vh - 165px);
         overflow-y: hidden;
     }
     .chart {
@@ -143,5 +157,10 @@ h1.active {
     .upper h1,
     .left h1 {
         font-size: 2rem;
+    }
+    .expenseIncome {
+        height: max-content;
+        flex: 1 1 auto;
+        margin: 0 0 10px 0;
     }
 }

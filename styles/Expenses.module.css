@@ -57,7 +57,7 @@
 
 .chart {
     border-radius: 3px;
-    flex: 1 1 auto;
+    height: calc(100vh - 120px);
     transition: .3s;
     margin: 0 10px;
     margin-right: 0;
@@ -77,18 +77,31 @@
 .expensesContainer,
 .incomesContainer {
     border-radius: 3px;
-    min-height: 350px;
-    flex: 1 1;
+    height: 294px;
     padding: 10px 20px;
     margin: 0 10px;
-    margin-top: 5px;
+    margin-top: 4px;
+    overflow-y: auto;
     background-color: var(--secondary-background-color);
 }
 
 .expenses,
 .incomes {
     list-style: none;
-    flex: 1 1;
+    height: 210px;
+    overflow-y: auto;
+}
+
+.expenses::-webkit-scrollbar,
+.incomes::-webkit-scrollbar {
+    all: initial;
+    background-color: transparent;
+    width: 5px;
+}
+
+.expenses::-webkit-scrollbar-thumb .incomes::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: var(--primary-color);
 }
 
 .expensesContainer h1,
@@ -128,7 +141,7 @@
     .chartContainer {
         width: 100%;
         flex: unset;
-        height: calc(100vh - 65px);
+        height: calc(100vh - 80px);
         overflow-y: hidden;
     }
     .chartOptions span {
@@ -146,5 +159,12 @@
     .incomesContainer {
         margin: 10px;
         margin-bottom: 0;
+        height: max-content;
+        flex: 1 1 auto;
+    }
+    .expenses,
+    .incomes {
+        overflow-y: unset;
+        height: max-content;
     }
 }

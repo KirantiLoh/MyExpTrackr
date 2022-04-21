@@ -7,6 +7,17 @@
     scroll-padding-top: 65px;
 }
 
+.aboutPageContainer::-webkit-scrollbar {
+    all: initial;
+    background-color: transparent;
+    width: 5px;
+}
+
+.aboutPageContainer::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: var(--primary-color);
+}
+
 .container {
     height: 100vh;
     overflow-y: hidden;

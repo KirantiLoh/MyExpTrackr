@@ -12,7 +12,7 @@ import FirebaseLogo from '../public/firebase.png'
 import emailjs from '@emailjs/browser'
 import Modal from '../components/Modal'
 import Maurice from '../public/maurice.jpg'
-import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const AboutPage = () => {
 
@@ -87,6 +87,20 @@ const AboutPage = () => {
           <Image src={Maurice} alt="Maurice Yang" className={styles.mauriceImage} width={300} height={300}/>
           <h3>Maurice Yang</h3>
           <p>Developer and Designer</p>
+          <div className={styles.socialMedia}>
+            <a href="https://www.instagram.com/maurice_yang/" target='_blank' rel='noreferrer'>
+              <FontAwesomeIcon icon={faInstagram}/>
+            </a>
+            <a href="https://twitter.com/ImMauriceYang" target='_blank' rel='noreferrer'>
+              <FontAwesomeIcon icon={faTwitter}/>
+            </a>
+            <a href="https://www.linkedin.com/in/maurice-yang/">
+              <FontAwesomeIcon icon={faLinkedin}/>
+            </a>
+            <a href="https://maurice-yang.netlify.app/" target='_blank' rel='noreferrer'>
+              <FontAwesomeIcon icon={faGlobe}/>
+            </a>
+          </div>
         </div>
         <div className={styles.contactContainer}>
           <form ref={formRef} onSubmit={e => handleSubmit(e)} autoComplete="off">
@@ -97,18 +111,6 @@ const AboutPage = () => {
             <button type="submit" placeholder='Message' className='primary-btn'>Send</button>
             <button type="reset" className='secondary-btn'>Reset</button>
           </form>
-          <div className={styles.socialMedia}>
-            <a href="https://www.instagram.com/maurice_yang/" target='_blank' rel='noreferrer'>
-              <FontAwesomeIcon icon={faInstagram}/>
-            </a>
-            <a href="https://twitter.com/ImMauriceYang" target='_blank' rel='noreferrer'>
-              <FontAwesomeIcon icon={faTwitter}/>
-            </a>
-            <a href="https://maurice-yang.netlify.app/" target='_blank' rel='noreferrer'>
-              <FontAwesomeIcon icon={faGlobe}/>
-            </a>
-
-          </div>
         <small>&copy; Copyright {new Date().getFullYear()}, Maurice Yang</small>
         </div>
     </div>
