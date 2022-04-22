@@ -199,12 +199,13 @@ textarea {
     color: var(--primary-text-color);
     border: 3px var(--primary-color) solid;
     outline: none;
-    transition: .3s;
     resize: vertical;
+    transition: .3s;
 }
 
 input[type="datetime-local"] {
     color-scheme: dark;
+    resize: none;
 }
 
 input::-webkit-calendar-picker-indicator {
